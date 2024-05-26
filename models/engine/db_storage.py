@@ -85,7 +85,7 @@ class DBStorage:
         return None
 
     def count(self, cls=None):
-        """ counts method """
+        """ counts for the method """
         data = self.all(cls)
         if cls in classes.values():
             data = self.all(cls)
