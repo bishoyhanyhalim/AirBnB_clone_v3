@@ -1,11 +1,14 @@
 #!/usr/bin/python3
+""" this is states route"""
 from api.v1.views import app_views
 from flask import jsonify, abort, request, make_response
 from models import storage
 from models.state import State
 
+
 @app_views.route('/states', methods=['GET'], strict_slashes=False)
 def get_states():
+    """ this is a method for states """
     all_list = []
 
     for obj in storage.all(State).values():
@@ -17,6 +20,7 @@ def get_states():
 @app_views.route('/states/<string:state_id>',
                  methods=['GET'], strict_slashes=False)
 def get_states_id(state_id):
+    """ this is a method for states """
     get_id_state = storage.get(State, state_id)
 
     if get_id_state is None:
@@ -28,6 +32,7 @@ def get_states_id(state_id):
 @app_views.route('/states/<string:state_id>',
                  methods=['DELETE'], strict_slashes=False)
 def delete_states(state_id):
+    """ this is a method for states """
     delete_id_state = storage.get(State, state_id)
 
     if delete_id_state is None:
@@ -41,6 +46,7 @@ def delete_states(state_id):
 
 @app_views.route('/states/', methods=['POST'], strict_slashes=False)
 def creates_states():
+    """ this is a method for states """
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
 
@@ -57,6 +63,7 @@ def creates_states():
 @app_views.route('/states/<string:state_id>', methods=['PUT'],
                  strict_slashes=False)
 def update_states(state_id):
+    """ this is a method for states """
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
 
