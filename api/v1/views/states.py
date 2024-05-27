@@ -4,7 +4,6 @@ from flask import jsonify, abort, request, make_response
 from models import storage
 from models.state import State
 
-
 @app_views.route('/states', methods=['GET'], strict_slashes=False)
 def get_states():
     all_list = []
