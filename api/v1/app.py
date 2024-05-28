@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """this is app file and main file"""
 
-from flask import Flask, jsonify, make_response
+from flask import Flask, jsonify
 from os import getenv
 from models import storage
 from api.v1.views import app_views
@@ -18,7 +18,9 @@ def call_storage_close(obj):
 
 @app.errorhandler(404)
 def error_page(error):
-    return make_response(jsonify({"error": "Not found"}), 404)
+    response = jsonify({"error": "Not found"})
+    response.status_code = 404
+    return response
 
 
 if __name__ == "__main__":
